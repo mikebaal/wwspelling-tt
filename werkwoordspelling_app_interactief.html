@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Werkwoordspelling TT</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #333; }
+        .vraag { margin-bottom: 15px; }
+        input[type="text"] { width: 200px; padding: 5px; }
+        .resultaat { margin-top: 20px; font-weight: bold; }
+        button { padding: 10px 15px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>Vul het juiste werkwoord in de tegenwoordige tijd in</h2>
+    <form id="quizForm">
+        <div class="vraag">1. Ik <input type="text" id="q1"> in een restaurant. <span id="r1"></span></div>
+        <div class="vraag">2. Jij <input type="text" id="q2"> Nederlands. <span id="r2"></span></div>
+        <div class="vraag">3. Wij <input type="text" id="q3"> voor het eten. <span id="r3"></span></div>
+        <div class="vraag">4. Hij <input type="text" id="q4"> de tafel. <span id="r4"></span></div>
+        <div class="vraag">5. Jullie <input type="text" id="q5"> de glazen. <span id="r5"></span></div>
+        <div class="vraag">6. Zij <input type="text" id="q6"> de bestelling op. <span id="r6"></span></div>
+        <div class="vraag">7. Ik <input type="text" id="q7"> de bon. <span id="r7"></span></div>
+        <div class="vraag">8. Jij <input type="text" id="q8"> de klant. <span id="r8"></span></div>
+        <div class="vraag">9. Wij <input type="text" id="q9"> de keuken schoon. <span id="r9"></span></div>
+        <div class="vraag">10. Hij <input type="text" id="q10"> het eten. <span id="r10"></span></div>
+        <button type="button" onclick="controleerAntwoorden()">Controleer antwoorden</button>
+    </form>
+    <div class="resultaat" id="score"></div>
+
+    <script>
+        const juisteAntwoorden = ["werk", "leert", "betalen", "dekt", "wassen", "neemt", "print", "helpt", "maken", "serveert"];
+
+        function controleerAntwoorden() {
+            let score = 0;
+            for (let i = 1; i <= 10; i++) {
+                const antwoord = document.getElementById("q" + i).value.trim().toLowerCase();
+                const resultaat = document.getElementById("r" + i);
+                if (antwoord === juisteAntwoorden[i - 1]) {
+                    resultaat.textContent = "✅";
+                    resultaat.style.color = "green";
+                    score++;
+                } else {
+                    resultaat.textContent = "❌";
+                    resultaat.style.color = "red";
+                }
+            }
+            document.getElementById("score").textContent = "Je score: " + score + " van de 10";
+        }
+    </script>
+</body>
+</html>
