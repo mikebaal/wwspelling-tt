@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Werkwoordspelling - Tegenwoordige Tijd</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; }
+        .question { margin-bottom: 15px; }
+        .feedback { margin-top: 5px; font-weight: bold; }
+        button { margin-top: 20px; padding: 10px 15px; }
+    </style>
+</head>
+<body>
+    <h1>Werkwoordspelling - Tegenwoordige Tijd</h1>
+    <p>Vul het juiste werkwoord in de tegenwoordige tijd in. Klik op "Controleer antwoorden" om feedback te krijgen.</p>
+    <form id="quizForm">
+        <div class="question">1. Ik (werken) in een restaurant. <input type="text" name="q1"></div>
+        <div class="question">2. Jij (leren) Nederlands. <input type="text" name="q2"></div>
+        <div class="question">3. Wij (betalen) voor het eten. <input type="text" name="q3"></div>
+        <div class="question">4. Hij (verven) de muur. <input type="text" name="q4"></div>
+        <div class="question">5. Jullie (rennen) naar school. <input type="text" name="q5"></div>
+        <div class="question">6. Zij (schrijven) een brief. <input type="text" name="q6"></div>
+        <div class="question">7. Ik (maken) een salade. <input type="text" name="q7"></div>
+        <div class="question">8. Jij (koken) soep. <input type="text" name="q8"></div>
+        <div class="question">9. Wij (lezen) een menu. <input type="text" name="q9"></div>
+        <div class="question">10. Hij (ontmoeten) de manager. <input type="text" name="q10"></div>
+        <button type="button" onclick="checkAnswers()">Controleer antwoorden</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        const correctAnswers = {
+            q1: "werk",
+            q2: "leert",
+            q3: "betalen",
+            q4: "verft",
+            q5: "rennen",
+            q6: "schrijft",
+            q7: "maak",
+            q8: "kookt",
+            q9: "lezen",
+            q10: "ontmoet"
+        };
+
+        function checkAnswers() {
+            const form = document.forms["quizForm"];
+            let results = "";
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const userAnswer = form["q" + i].value.trim().toLowerCase();
+                const correct = correctAnswers["q" + i];
+                if (userAnswer === correct) {
+                    results += `<p>Vraag ${i}: ✅ Goed (${userAnswer})</p>`;
+                    score++;
+                } else {
+                    results += `<p>Vraag ${i}: ❌ Fout (${userAnswer}), goed antwoord is: ${correct}</p>`;
+                }
+            }
+
+            results += `<h3>Je score: ${score} van de 10</h3>`;
+            document.getElementById("results").innerHTML = results;
+        }
+    </script>
+</body>
+</html>
